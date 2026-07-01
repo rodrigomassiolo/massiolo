@@ -1,0 +1,916 @@
+:root {
+    --card-max-width: 800px;
+    --transition-speed: 0.3s;
+    /* Pill Variables - Light Theme */
+    --pill-bg: rgba(255, 255, 255, 0.9);
+    --pill-border: rgba(0, 0, 0, 0.25);
+    --pill-text: #000000;
+    --pill-active-bg: rgba(0, 0, 0, 0.15);
+    --pill-hover-bg: rgba(0, 0, 0, 0.08);
+}
+
+.theme--dark {
+    --pill-bg: rgba(30, 35, 40, 0.6);
+    --pill-border: rgba(255, 255, 255, 0.15);
+    --pill-text: #ffffff;
+    --pill-active-bg: rgba(255, 255, 255, 0.15);
+    --pill-hover-bg: rgba(255, 255, 255, 0.1);
+}
+
+body {
+    background-color: var(--page-bg);
+    color: var(--text-color);
+    font-family: 'JetBrains Mono', monospace;
+    transition: background-color var(--transition-speed), color var(--transition-speed);
+    margin: 0;
+    padding-top: 2rem;
+    padding-bottom: 5rem;
+    -webkit-font-smoothing: antialiased;
+    letter-spacing: -0.02em;
+}
+
+.tech-font {
+    font-family: 'JetBrains Mono', monospace;
+}
+
+.container {
+    max-width: var(--card-max-width);
+}
+
+.top-controls {
+    display: none;
+    /* Removed in favor of header-controls-pill */
+}
+
+.card {
+    background-color: var(--card-bg) !important;
+    color: var(--text-color) !important;
+    border: 1px solid var(--border-color) !important;
+    border-radius: 8px;
+    margin-bottom: 0.35rem !important;
+    /* Reduced even more */
+    overflow: hidden;
+    transition: background-color var(--transition-speed), border-color var(--transition-speed);
+}
+
+h1,
+.h2 {
+    margin-bottom: 0.5rem !important;
+    /* Altura controlada */
+    line-height: 1.2;
+}
+
+p {
+    line-height: 1.6;
+    margin-bottom: 0.6rem;
+    font-size: 1rem;
+}
+
+/* Bullet alignment and spacing */
+.card-body p {
+    font-size: 1rem;
+}
+
+.card-body {
+    padding: 1rem 1.25rem 0.8rem !important;
+    /* Unified padding for balance */
+}
+
+.card-body>*:last-child {
+    margin-bottom: 0 !important;
+}
+
+.card-body>*:last-child .experience-item:last-child,
+.card-body>*:last-child .education-item:last-child,
+.experience-item:last-child,
+.education-item:last-child {
+    padding-bottom: 0 !important;
+}
+
+.card-body h2 {
+    margin-bottom: 0.75rem;
+    /* Slightly more space after titles */
+}
+
+.profile-banner {
+    height: 190px;
+    background-image: var(--banner-img);
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+
+.profile-photo-container {
+    margin-top: -120px;
+    display: flex;
+    justify-content: center;
+    position: relative;
+    z-index: 5;
+}
+
+.profile-photo {
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    border: 4px solid var(--card-bg);
+    object-fit: cover;
+}
+
+.profile-info {
+    padding: 1.5rem 1.5rem;
+    text-align: center;
+}
+
+.profile-header-content {
+    display: inline-block;
+    text-align: left;
+    max-width: 100%;
+}
+
+.main-controls-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin: 0 0 0.35rem 0;
+    /* Reducido para minimizar espacios y coincidir con las cards */
+    padding: 2px;
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    /* Borde oscuro como los otros apartados */
+    border-radius: 8px;
+    /* Igual redondeado que las cards */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    /* shadow-sm aproximado */
+}
+
+.main-controls-wrapper .header-controls-pill {
+    display: grid !important;
+    grid-template-columns: 1fr auto 1fr auto 1fr;
+    /* Tres tercios separados por los dividers */
+    align-items: center;
+    background: transparent !important;
+    /* Integrado en el card */
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none;
+    border: none !important;
+    border-radius: 0;
+    padding: 0 8px;
+    height: 48px;
+    width: 100%;
+    box-shadow: none !important;
+    justify-items: center;
+}
+
+.main-controls-wrapper .pill-divider {
+    margin: 0;
+    opacity: 0.2;
+}
+
+.header-controls-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2rem;
+}
+
+
+.line-height-1 {
+    line-height: 1;
+}
+
+.experience-item,
+.education-item {
+    padding: 1rem 0;
+}
+
+.experience-logo {
+    width: 48px;
+    height: 48px;
+    object-fit: contain;
+}
+
+/* code.js compatibility */
+.jzpXKPEeRZlDwTJsfWKfHLXzQkHaoCkTwBUnnk {
+    display: block;
+    overflow: visible;
+}
+
+/* Header Controls Pill - Glassmorphism Refined */
+.header-controls-pill {
+    display: flex;
+    align-items: center;
+    background: var(--card-bg) !important;
+    backdrop-filter: blur(12px) !important;
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--pill-border) !important;
+    border-radius: 50px;
+    padding: 4px 8px;
+    height: 44px;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    justify-content: space-between;
+    margin-bottom: 0 !important;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    color: var(--pill-text) !important;
+    gap: 8px;
+}
+
+.header-controls-pill:hover {
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    transform: translateY(-1px);
+}
+
+.theme--dark .header-controls-pill {
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Visual Switches */
+.toggle-switch {
+    display: flex;
+    background: rgba(0, 0, 0, 0.05);
+    border-radius: 50px;
+    padding: 2px;
+    gap: 2px;
+}
+
+.theme--dark .toggle-switch {
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.header-controls-pill .lang-btn,
+.header-controls-pill .pill-btn,
+.header-controls-pill .theme-option {
+    background: transparent;
+    border: none;
+    padding: 0 10px;
+    height: 34px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    color: var(--pill-text) !important;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-decoration: none;
+    line-height: 1;
+}
+
+.header-controls-pill .lang-btn {
+    opacity: 0.6;
+    min-width: 44px;
+}
+
+.header-controls-pill .lang-btn.active {
+    opacity: 1;
+    background: var(--pill-active-bg) !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.header-controls-pill .theme-switch {
+    display: flex;
+    background: rgba(0, 0, 0, 0.05);
+    border-radius: 50px;
+    padding: 2px;
+}
+
+.theme--dark .theme-switch {
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.header-controls-pill .theme-option {
+    width: 34px;
+    padding: 0;
+    opacity: 0.4;
+}
+
+.header-controls-pill .theme-option.active {
+    opacity: 1;
+    background: var(--pill-active-bg) !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.header-controls-pill .download-btn {
+    background: var(--pill-active-bg) !important;
+    border-radius: 50px;
+    padding: 0 14px;
+    height: 34px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--pill-text) !important;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.header-controls-pill .download-btn:hover {
+    filter: brightness(1.1);
+    transform: scale(1.05);
+}
+
+.header-controls-pill .download-btn svg {
+    width: 16px;
+    height: 16px;
+}
+
+.pill-divider {
+    width: 1px;
+    height: 20px;
+    background: var(--pill-border);
+    margin: 0 4px;
+}
+
+.contact-info-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px 32px;
+    margin-top: 0.5rem;
+    width: 100%;
+}
+
+.contact-info-list a,
+.contact-info-list div {
+    justify-content: flex-start;
+}
+
+.contact-item-right {
+    flex-direction: row-reverse;
+    text-align: right;
+    justify-self: end;
+}
+
+.contact-item-right svg {
+    margin-left: 0;
+}
+
+.contact-hover {
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    line-height: 1.5 !important;
+    min-height: 24px !important;
+    padding-bottom: 4px !important;
+    margin-bottom: 0px !important;
+}
+
+.contact-hover:hover {
+    opacity: 0.8;
+    transform: translateX(-4px);
+}
+
+@media screen and (max-width: 768px) {
+    .contact-hover:hover {
+        transform: translateX(4px);
+    }
+}
+
+
+.link-white,
+.color-inherit {
+    color: inherit;
+    text-decoration: none;
+}
+
+.link-white:hover {
+    text-decoration: underline;
+}
+
+.border-bottom {
+    border-bottom-color: var(--border-color) !important;
+}
+
+/* CONTACT LINKS - BASE (SIN COLORES) */
+.contact-links {
+    display: flex;
+    gap: 14px;
+}
+
+.contact-link {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.08);
+    font-size: 18px;
+    transition: all 0.2s ease;
+    text-decoration: none;
+}
+
+.contact-link i {
+    font-size: 16px;
+}
+
+.contact-link:hover {
+    background: rgba(255, 255, 255, 0.18);
+    transform: translateY(-2px);
+}
+
+/* CONTACT LINKS ALINEADOS A LA DERECHA */
+.contact-links-right {
+    justify-content: flex-end;
+}
+
+.mobile-break {
+    display: none;
+}
+
+/* Alineación de la columna de contacto una línea abajo (debajo del nombre) */
+/* REMOVED: .contact-align-top */
+
+@media screen and (max-width: 768px) {
+    /* REMOVED: .contact-align-top */
+}
+
+/* Para que el botón se comporte como un link */
+.btn-link-style {
+    background: none;
+    border: none;
+    padding: 0;
+    color: inherit;
+    /* Hereda el color del tema */
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+.contact-link-item {
+    transition: opacity 0.2s;
+    display: flex;
+    align-items: center;
+}
+
+.contact-link-item:hover {
+    opacity: 0.7;
+    color: var(--primary-color);
+    /* O el color que uses para destacar */
+}
+
+
+/* (Merged into main contact-link style) */
+
+@media screen and (max-width: 768px) {
+
+    /* Optimize spacing for mobile */
+    .profile-info {
+        padding: 1.5rem 1rem;
+    }
+
+    .header-controls-container {
+        margin-bottom: 1.5rem;
+    }
+
+    .profile-photo {
+        width: 150px;
+        height: 150px;
+    }
+
+    /* Optimize spacing */
+    .card-body {
+        padding: 1.25rem !important;
+    }
+
+    .experience-item,
+    .education-item {
+        padding: 1rem 0;
+    }
+
+    .h2,
+    h1 {
+        font-size: 1.65rem !important;
+    }
+
+    .contact-info-list {
+        grid-template-columns: 1fr;
+        gap: 8px;
+    }
+
+    .contact-item-right {
+        flex-direction: row;
+        text-align: left;
+        justify-self: start;
+    }
+}
+
+
+.border-radius-custom {
+    border-radius: 12px !important;
+    /* Bordes redondeados más suaves */
+}
+
+/* Estilo base del botón clonando la estética de la card */
+.custom-contact-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 16px;
+    background-color: var(--card-bg);
+    /* Igual que la tarjeta */
+    color: var(--text-color);
+    border: 1px solid var(--border-color);
+    /* Mismo borde que la tarjeta */
+    border-radius: 8px;
+    /* Mismo redondeo */
+    transition: all var(--transition-speed);
+    cursor: pointer;
+    flex: 1;
+    /* Para que midan lo mismo en mobile */
+}
+
+/* Efecto hover sutil */
+.custom-contact-btn:hover {
+    filter: brightness(1.2);
+    /* Brilla un poquito al pasar el mouse */
+    border-color: var(--text-color);
+    /* El borde se nota un poco más */
+    color: var(--text-color);
+}
+
+/* Ajustes de iconos y texto */
+.contact-icon-wrapper {
+    margin-right: 8px;
+    display: flex;
+    align-items: center;
+    font-size: 1.1rem;
+}
+
+.btn-text {
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.theme-toggle-btn-style {
+    background: rgba(0, 0, 0, 0.5);
+    border: none;
+    border-radius: 50%;
+    width: 42px;
+    height: 42px;
+    font-size: 20px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(6px);
+    transition: transform 0.2s ease, background 0.2s ease;
+    color: white;
+}
+
+.theme-toggle-btn-style:hover {
+    transform: scale(1.1);
+}
+
+/* Date alignment for desktop view */
+@media screen and (min-width: 769px) {
+    .experience-item .d-flex > div {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: baseline;
+        width: 100%;
+    }
+
+    .experience-item h3 {
+        width: auto !important;
+        order: 1;
+    }
+
+    .experience-item p[data-i18n*="_date"] {
+        margin-bottom: 0 !important;
+        order: 2;
+        text-align: right;
+        margin-left: auto;
+    }
+
+    .experience-item h4 {
+        margin-bottom: 0 !important;
+        width: 100% !important;
+        order: 3;
+    }
+}
+
+@media print {
+    @page {
+        margin: 0 !important;
+        size: A4 portrait;
+    }
+
+    html.theme--dark {
+        --print-bg-color: #1b1f23;
+        --print-text-color: #ffffff;
+    }
+
+    html:not(.theme--dark) {
+        --print-bg-color: #fdf2e2;
+        --print-text-color: #000000;
+    }
+
+    /* Force background rendering and reset transitions */
+    html,
+    body {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        width: 100% !important;
+        height: 100% !important;
+        background-color: var(--print-bg-color) !important;
+        color: var(--print-text-color) !important;
+    }
+
+    * {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+        transition: none !important;
+        animation: none !important;
+    }
+
+    .container,
+    .print-page {
+        background-color: var(--print-bg-color) !important;
+    }
+
+    .card,
+    .profile-info {
+        background-color: var(--print-bg-color) !important;
+        color: var(--print-text-color) !important;
+        border: none !important;
+        border-radius: 0 !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        box-shadow: none !important;
+    }
+
+    /* PRINT PAGE WRAPPER */
+    .print-page {
+        width: 100%;
+        height: 297mm;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        box-sizing: border-box;
+        padding: 0 0mm;
+        page-break-inside: avoid;
+        page-break-after: always;
+        overflow: hidden;
+    }
+
+    .print-page:last-child {
+        page-break-after: auto;
+    }
+
+    .print-page>.card {
+        width: 100%;
+        max-width: 200mm;
+    }
+
+    /* Canvas propagation */
+    .container {
+        max-width: 100% !important;
+        width: 100% !important;
+        margin: 0 auto !important;
+        padding: 8mm 0 !important;
+    }
+
+    .card-body {
+        padding: 1.5rem 2rem !important;
+    }
+
+    /* Hide unnecessary elements */
+    .profile-photo-container,
+    .profile-banner,
+    .top-controls,
+    #theme-toggle-btn,
+    #download-cv-btn,
+    .lang-switch,
+    .toast-container,
+    .experience-logo:not([src*="unlam"]),
+    button,
+    .no-print {
+        display: none !important;
+    }
+
+    .page-break {
+        display: block !important;
+        page-break-before: always !important;
+        break-before: page !important;
+        height: 8mm !important;
+    }
+
+    /* Reset spacing for all common elements */
+    [class*="mb-"],
+    [class*="mt-"],
+    [class*="pb-"],
+    [class*="pt-"] {
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+
+    /* Personal info layout (2 columns) */
+    .profile-info {
+        padding: 0.75rem 1.5rem !important;
+        text-align: center !important;
+    }
+
+    .contact-info-list {
+        display: grid !important;
+        grid-template-columns: 1fr 1fr !important;
+        gap: 8px 32px !important;
+        width: 100% !important;
+        margin-top: 0.5rem !important;
+        text-align: left !important;
+    }
+
+    .contact-info-list a,
+    .contact-info-list div {
+        justify-content: flex-start !important;
+        width: auto !important;
+    }
+
+    .contact-item-right {
+        flex-direction: row-reverse !important;
+        text-align: right !important;
+        justify-self: end !important;
+    }
+
+    .contact-info-list p:not(.d-print-none):not(.no-print),
+    .contact-info-list a:not(.d-print-none):not(.no-print),
+    .profile-subtitle:not(.d-print-none):not(.no-print) {
+        margin-bottom: 0px !important;
+        line-height: 1.5 !important;
+        min-height: 24px !important;
+        display: flex !important;
+        align-items: center !important;
+    }
+
+    /* Typography fixes */
+    h1,
+    h2,
+    h3,
+    h4,
+    .h2,
+    .h4,
+    .h5 {
+        color: var(--print-text-color) !important;
+    }
+
+    .text-muted,
+    .text-secondary {
+        color: var(--print-text-color) !important;
+        opacity: 1 !important;
+    }
+
+    a {
+        text-decoration: none !important;
+        color: var(--print-text-color) !important;
+    }
+
+    h2[data-i18n="experience_title"] {
+        margin-top: 0 !important;
+    }
+
+    /* Theme specific print fixes */
+    html.theme--dark .experience-logo {
+        filter: brightness(0) invert(1);
+    }
+}
+
+html.is-printing .card {
+    margin-bottom: 0 !important;
+}
+
+html.is-printing .card-body {
+    padding: 0.3rem 1.5rem !important;
+    /* Slightly tighter */
+}
+
+html.is-printing h2 {
+    margin-bottom: 0.15rem !important;
+    padding-bottom: 0.1rem !important;
+}
+
+html.is-printing .experience-item,
+html.is-printing .education-item {
+    padding: 0.15rem 0 !important;
+    /* Tighter items */
+}
+
+html.is-printing .experience-item .d-flex>div {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: baseline;
+    width: 100%;
+}
+
+html.is-printing .experience-item h3 {
+    width: auto !important;
+    margin-bottom: 2px !important;
+    order: 1;
+}
+
+html.is-printing .experience-item p[data-i18n*="_date"] {
+    margin-bottom: 0 !important;
+    order: 2;
+}
+
+html.is-printing .experience-item h4 {
+    margin-bottom: 0 !important;
+    width: 100% !important;
+    order: 3;
+}
+
+html.is-printing .experience-item .mb-3 {
+    margin-bottom: 0.2rem !important;
+}
+
+/* Global normalization for header columns alignment (Web & Print) */
+.profile-subtitle:not(.d-print-none):not(.no-print),
+.contact-info-list p:not(.d-print-none):not(.no-print),
+.contact-info-list a:not(.d-print-none):not(.no-print) {
+    margin-bottom: 0px !important;
+    padding-bottom: 4px !important;
+    line-height: 1.4 !important;
+    min-height: 24px !important;
+    display: flex;
+    align-items: center;
+}
+
+html.is-printing {
+    font-size: 0.95rem !important;
+    /* Slightly smaller font to compensate for margins */
+}
+
+@media print {
+
+    /* Force Left alignment for the name and info in print */
+    .profile-info {
+        text-align: left !important;
+        padding-left: 2rem !important;
+    }
+
+    .profile-info h1,
+    .profile-info .h2 {
+        text-align: left !important;
+        display: block !important;
+        width: 100% !important;
+    }
+
+    .profile-header-content {
+        display: block !important;
+        width: 100% !important;
+    }
+
+    .profile-subtitle,
+    .contact-info-list p,
+    .contact-info-list a {
+        padding-bottom: 0px !important;
+        /* Perfect flush alignment for print */
+    }
+}
+
+/* Specific overrides for is-printing simulation */
+html.is-printing .profile-info {
+    padding: 0.5rem 2rem !important;
+    text-align: left !important;
+}
+
+@media screen and (min-width: 769px) {
+    .profile-photo-container {
+        justify-content: flex-end !important;
+        padding-right: 1.5rem !important;
+        padding-left: 0 !important;
+        margin-top: -140px !important;
+    }
+
+    .profile-photo {
+        width: 170px !important;
+        height: 170px !important;
+    }
+
+    .profile-info {
+        text-align: left !important;
+        padding-left: 1.5rem !important;
+        padding-right: 1.5rem !important;
+        padding-top: 0 !important;
+        padding-bottom: 0.1rem !important;
+        /* Unified with card-body */
+    }
+
+    .profile-info h1 {
+        font-size: 1.8rem !important;
+        margin-top: -1.5rem !important;
+    }
+
+    .profile-header-content {
+        display: block;
+        width: 100%;
+    }
+
+    .contact-info-list {
+        font-size: 1.1rem !important;
+        gap: 10px 40px !important;
+    }
+}

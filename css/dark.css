@@ -1,0 +1,28 @@
+.theme--dark {
+    --page-bg: #000000;
+    /* Negro */
+    --card-bg: #1b1f23;
+    /* Gris oscuro */
+    --text-color: #ffffff;
+    /* Negro (as requested) */
+    --bs-secondary-color: rgb(183, 183, 183);
+    --border-color: #444444;
+    --banner-img: url('../img/banner_dark.webp');
+}
+
+/* Note: Since the user requested black text on dark grey/black, it will be hard to read. 
+   Keeping it as requested but making it a variable for easy fix. */
+
+/* CONTACT LINKS - MODO OSCURO */
+html.theme--dark .contact-link {
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    color: #ffffff;
+    background-color: transparent;
+    opacity: 0.8;
+}
+
+html.theme--dark .contact-link:hover {
+    background-color: #ffffff;
+    color: #000000;
+    opacity: 1;
+}
